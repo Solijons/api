@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
     email: String,
+    name: String,
     birthday: String,
     stage: String,
     pathology: String,
