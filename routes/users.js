@@ -53,7 +53,7 @@ router.post('/register', (req, res, next) => {
       User.findOne({ email: req.body.email })
       .then((userToCheck) => {
         if(userToCheck) {
-          res.status(500).json({
+          res.status(404).json({
             message: "Email is already is used",
           })
         } else {
