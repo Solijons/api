@@ -48,12 +48,14 @@ router.post('/register', (req, res, next) => {
         status: req.body.status,
         doctor: req.body.doctor,
         connect: req.body.connect,
-        topics: req.body.topics
+        topics: req.body.topics,
+        surgeon: req.body.surgeon
     });
       User.findOne({ email: req.body.email })
       .then((userToCheck) => {
         if(userToCheck) {
-          res.status(404).json({
+          res.status(400).json({
+            code: 400,
             message: "Email is already is used",
           })
         } else {
@@ -62,13 +64,14 @@ router.post('/register', (req, res, next) => {
           .then(result => {
             console.log(result);
             res.status(201).json({
-              message: "Handling POST requests to /users",
-              createdUser: result
+              code: 201,
+              message: "Handling POST requests to /users"
             });
           })
           .catch(err => {
             console.log(err);
             res.status(500).json({
+              code: 500,
               error: err
             });
           });

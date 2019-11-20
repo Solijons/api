@@ -7,15 +7,20 @@ const UserSchema = new Schema({
     name: String,
     birthday: String,
     stage: String,
-    pathology: String,
+    pathology: Array,
     address: String,
     hospital_network: String,
     diagnosis_date: String,
     about: String,
     status: String,
     doctor: String,
-    connect: String,
-    topics: String,
+    connect: Array,
+    topics: Array,
+    surgeon: String,
+    createdAt:{
+        type: Date,
+        default: Date.now()
+    }
 });
 
 module.exports = mongoose.model('User', UserSchema);
